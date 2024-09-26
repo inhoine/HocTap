@@ -1,0 +1,152 @@
+<html>
+<head>
+<title>CreateProduct.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+.s4 { color: #7a7e85;}
+.s5 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+CreateProduct.java</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.*;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">chrome</span><span class="s2">.</span><span class="s1">ChromeDriver</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">interactions</span><span class="s2">.</span><span class="s1">Actions</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">CreateProduct </span><span class="s2">{</span>
+    <span class="s1">WebDriver driver</span><span class="s2">;</span>
+    <span class="s1">By usernametxt </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;(//input[@name= 'username'])[1]&quot;</span><span class="s2">);</span>
+    <span class="s1">By pwdtxt </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;(//input[@name= 'password'])[1]&quot;</span><span class="s2">);</span>
+    <span class="s1">By Login </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;(//button[@type= 'submit'])[1]&quot;</span><span class="s2">);</span>
+    <span class="s1">By getText </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;//div[@class = 'title d-none d-lg-block d-md-block']&quot;</span><span class="s2">);</span>
+    <span class="s1">By icgoWallet </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;(//div[@id= 'wallet-balance']/div)[2]&quot;</span><span class="s2">);</span>
+    <span class="s1">By textGowallet </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;//span[@class= 'q68SgCTxTQYGNh1eF0j62w==']&quot;</span><span class="s2">);</span>
+    <span class="s1">By TotalgoWallet </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;//div[@class= ' C0pXmfKbDwobjSqDnn032Q== color-white']&quot;</span><span class="s2">);</span>
+    <span class="s1">By selectProdcut </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;(//div[@class= ' menu gs-atm__scrollbar-1']/div)[5]&quot;</span><span class="s2">);</span>
+    <span class="s1">By createProductbutton </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;(//button[@class= 'gs-button  gs-button__green gs-button--undefined '])[1]&quot;</span><span class="s2">);</span>
+    <span class="s1">By productName </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;//input[@name = 'productName']&quot;</span><span class="s2">);</span>
+    <span class="s1">By selectImg </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;//input[@accept = 'image/jpeg,image/png,image/gif']&quot;</span><span class="s2">);</span>
+    <span class="s1">By listingPrice </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;(//input[@class ='form-control cur-input cur-input--unit'])[1]&quot;</span><span class="s2">);</span>
+    <span class="s1">By sellingPrice </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;(//input[@class ='form-control cur-input cur-input--unit'])[2]&quot;</span><span class="s2">);</span>
+    <span class="s1">By stockProduct </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;(//input[@class='form-control cur-input cur-input--non-unit'])[2]&quot;</span><span class="s2">);</span>
+    <span class="s1">By applyStockbutton </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;gs-button  gs-button__blue gs-button--undefined &quot;</span><span class="s2">);</span>
+
+
+    <span class="s1">By saveProduct </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;(//button[@type='submit'])[2]&quot;</span><span class="s2">);</span>
+
+
+    <span class="s0">public void </span><span class="s1">test</span><span class="s2">() </span><span class="s0">throws </span><span class="s1">InterruptedException </span><span class="s2">{</span>
+
+        <span class="s4">//Download ChromeDriver</span>
+        <span class="s1">io</span><span class="s2">.</span><span class="s1">github</span><span class="s2">.</span><span class="s1">bonigarcia</span><span class="s2">.</span><span class="s1">wdm</span><span class="s2">.</span><span class="s1">WebDriverManager</span><span class="s2">.</span><span class="s1">chromedriver</span><span class="s2">().</span><span class="s1">setup</span><span class="s2">();</span>
+        <span class="s4">// Init chrome driver</span>
+        <span class="s1">driver </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ChromeDriver</span><span class="s2">();</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">manage</span><span class="s2">().</span><span class="s1">window</span><span class="s2">().</span><span class="s1">maximize</span><span class="s2">();</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s3">&quot;https://admin.unisell.vn&quot;</span><span class="s2">);</span>
+        <span class="s1">Thread</span><span class="s2">.</span><span class="s1">sleep</span><span class="s2">(</span><span class="s5">3000</span><span class="s2">);</span>
+        <span class="s1">WebElement inputfield </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">usernametxt</span><span class="s2">);</span>
+        <span class="s1">inputfield</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s3">&quot;pepo01gl@gmail.com&quot;</span><span class="s2">);</span>
+        <span class="s1">WebElement inputpwd </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">pwdtxt</span><span class="s2">);</span>
+        <span class="s1">inputpwd</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s3">&quot;123456A@&quot;</span><span class="s2">);</span>
+        <span class="s1">WebElement clickLogin </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">Login</span><span class="s2">);</span>
+        <span class="s1">clickLogin</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+
+        <span class="s1">Thread</span><span class="s2">.</span><span class="s1">sleep</span><span class="s2">(</span><span class="s5">2000</span><span class="s2">);</span>
+
+<span class="s4">//        WebElement titlegetText = driver.findElement(getText);</span>
+<span class="s4">//        String text = titlegetText.getText();</span>
+<span class="s4">//        System.out.println(text);</span>
+<span class="s4">//</span>
+<span class="s4">//        WebElement clickIcon = driver.findElement(icgoWallet);</span>
+<span class="s4">//        clickIcon.click();</span>
+<span class="s4">//</span>
+<span class="s4">//</span>
+<span class="s4">//        WebElement textgetWallet = driver.findElement(textGowallet);</span>
+<span class="s4">//        String textgoWallet = textgetWallet.getText();</span>
+<span class="s4">//</span>
+<span class="s4">//        WebElement getTextWallet = driver.findElement(TotalgoWallet);</span>
+<span class="s4">//        String goWallet = getTextWallet.getText();</span>
+<span class="s4">//        System.out.println(textgoWallet + goWallet);</span>
+
+        <span class="s1">WebElement clickprodcut </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">selectProdcut</span><span class="s2">);</span>
+        <span class="s1">clickprodcut</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+
+        <span class="s1">Thread</span><span class="s2">.</span><span class="s1">sleep</span><span class="s2">(</span><span class="s5">1000</span><span class="s2">);</span>
+
+
+        <span class="s1">WebElement selectCreateProduct </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">createProductbutton</span><span class="s2">);</span>
+        <span class="s1">selectCreateProduct</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+        <span class="s1">Thread</span><span class="s2">.</span><span class="s1">sleep</span><span class="s2">(</span><span class="s5">2000</span><span class="s2">);</span>
+
+        <span class="s1">WebElement inputProductname </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">productName</span><span class="s2">);</span>
+        <span class="s1">inputProductname</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s3">&quot;Sản phẩm auto&quot;</span><span class="s2">);</span>
+        <span class="s1">Thread</span><span class="s2">.</span><span class="s1">sleep</span><span class="s2">(</span><span class="s5">1000</span><span class="s2">);</span>
+
+        <span class="s1">WebElement inputImg </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">selectImg</span><span class="s2">);</span>
+        <span class="s1">inputImg</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s3">&quot;C://Users//admin//Desktop//MediaStep//cuahangtienloi//khoidong.png&quot;</span><span class="s2">);</span>
+        <span class="s1">Thread</span><span class="s2">.</span><span class="s1">sleep</span><span class="s2">(</span><span class="s5">1000</span><span class="s2">);</span>
+
+
+
+
+        <span class="s1">WebElement inputListingprice </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">listingPrice</span><span class="s2">);</span>
+        <span class="s1">inputListingprice</span><span class="s2">.</span><span class="s1">clear</span><span class="s2">();</span>
+        <span class="s1">inputListingprice</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s3">&quot;10000&quot;</span><span class="s2">);</span>
+        <span class="s1">Thread</span><span class="s2">.</span><span class="s1">sleep</span><span class="s2">(</span><span class="s5">3000</span><span class="s2">);</span>
+
+        <span class="s1">WebElement inputSellingprice </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">sellingPrice</span><span class="s2">);</span>
+        <span class="s1">inputSellingprice</span><span class="s2">.</span><span class="s1">clear</span><span class="s2">();</span>
+        <span class="s1">inputSellingprice</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s3">&quot;10000&quot;</span><span class="s2">);</span>
+        <span class="s1">Thread</span><span class="s2">.</span><span class="s1">sleep</span><span class="s2">(</span><span class="s5">3000</span><span class="s2">);</span>
+
+        <span class="s1">Actions actions </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Actions</span><span class="s2">(</span><span class="s1">driver</span><span class="s2">);</span>
+        <span class="s1">WebElement element </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">stockProduct</span><span class="s2">);</span>
+        <span class="s1">element</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s1">Keys</span><span class="s2">.</span><span class="s1">CONTROL </span><span class="s2">+ </span><span class="s3">&quot;A&quot;</span><span class="s2">, </span><span class="s1">Keys</span><span class="s2">.</span><span class="s1">BACK_SPACE</span><span class="s2">);</span>
+        <span class="s1">element </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">stockProduct</span><span class="s2">);</span>
+<span class="s4">//        try {</span>
+
+<span class="s4">//        }catch (StaleElementReferenceException e){</span>
+<span class="s4">//</span>
+<span class="s4">//        }</span>
+
+        <span class="s4">//            // Di chuột đến phần tử</span>
+        <span class="s4">// Di chuột đến phần tử</span>
+        <span class="s0">try </span><span class="s2">{</span>
+            <span class="s1">actions</span><span class="s2">.</span><span class="s1">moveToElement</span><span class="s2">(</span><span class="s1">element</span><span class="s2">).</span><span class="s1">perform</span><span class="s2">();</span>
+        <span class="s2">}</span><span class="s0">catch </span><span class="s2">(</span><span class="s1">StaleElementReferenceException e</span><span class="s2">){</span>
+            <span class="s1">element </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">stockProduct</span><span class="s2">);</span>
+            <span class="s1">actions</span><span class="s2">.</span><span class="s1">moveToElement</span><span class="s2">(</span><span class="s1">element</span><span class="s2">).</span><span class="s1">perform</span><span class="s2">();</span>
+        <span class="s2">}</span>
+
+        <span class="s4">// Nhấp chuột phải</span>
+        <span class="s1">actions</span><span class="s2">.</span><span class="s1">click</span><span class="s2">(</span><span class="s1">element</span><span class="s2">).</span><span class="s1">perform</span><span class="s2">();</span>
+        <span class="s1">actions</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s3">&quot;5&quot;</span><span class="s2">).</span><span class="s1">perform</span><span class="s2">();</span>
+
+<span class="s4">//        WebElement inputStockproduct = driver.findElement(stockProduct);</span>
+<span class="s4">////        inputStockproduct.clear(); // Xóa nội dung cũ nếu cần</span>
+<span class="s4">//        inputStockproduct.sendKeys(&quot;10&quot;);</span>
+<span class="s4">//        Thread.sleep(3000);</span>
+
+
+
+<span class="s4">//        Thread.sleep(1000);</span>
+
+<span class="s4">//        WebElement applyStock = driver.findElement(applyStockbutton);</span>
+<span class="s4">//        applyStock.click();</span>
+
+        <span class="s1">WebElement selectsaveProduct </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">saveProduct</span><span class="s2">);</span>
+        <span class="s1">selectsaveProduct</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>

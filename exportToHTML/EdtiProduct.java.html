@@ -1,0 +1,88 @@
+<html>
+<head>
+<title>EdtiProduct.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+.s4 { color: #7a7e85;}
+.s5 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+EdtiProduct.java</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.*;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">chrome</span><span class="s2">.</span><span class="s1">ChromeDriver</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">interactions</span><span class="s2">.</span><span class="s1">Actions</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">concurrent</span><span class="s2">.</span><span class="s1">TimeUnit</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">EdtiProduct </span><span class="s2">{</span>
+    <span class="s1">WebDriver driver</span><span class="s2">;</span>
+    <span class="s1">By usernametxt </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;(//input[@name= 'username'])[1]&quot;</span><span class="s2">);</span>
+    <span class="s1">By pwdtxt </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;(//input[@name= 'password'])[1]&quot;</span><span class="s2">);</span>
+    <span class="s1">By Login </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;(//button[@type= 'submit'])[1]&quot;</span><span class="s2">);</span>
+    <span class="s1">By selectProdcut </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;(//div[@class= ' menu gs-atm__scrollbar-1']/div)[5]&quot;</span><span class="s2">);</span>
+
+    <span class="s1">By productDetail </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;//a[@href='/product/edit/1299290']&quot;</span><span class="s2">);</span>
+
+    <span class="s1">By listingPrice </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;(//input[@class ='form-control cur-input cur-input--unit'])[1]&quot;</span><span class="s2">);</span>
+
+
+    <span class="s0">public void </span><span class="s1">testEdit</span><span class="s2">() </span><span class="s0">throws </span><span class="s1">InterruptedException </span><span class="s2">{</span>
+        <span class="s4">//Download ChromeDriver</span>
+        <span class="s1">io</span><span class="s2">.</span><span class="s1">github</span><span class="s2">.</span><span class="s1">bonigarcia</span><span class="s2">.</span><span class="s1">wdm</span><span class="s2">.</span><span class="s1">WebDriverManager</span><span class="s2">.</span><span class="s1">chromedriver</span><span class="s2">().</span><span class="s1">setup</span><span class="s2">();</span>
+        <span class="s4">// Init chrome driver</span>
+        <span class="s1">driver </span><span class="s2">= </span><span class="s0">new </span><span class="s1">ChromeDriver</span><span class="s2">();</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">manage</span><span class="s2">().</span><span class="s1">window</span><span class="s2">().</span><span class="s1">maximize</span><span class="s2">();</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s3">&quot;https://admin.unisell.vn&quot;</span><span class="s2">);</span>
+        <span class="s1">Thread</span><span class="s2">.</span><span class="s1">sleep</span><span class="s2">(</span><span class="s5">3000</span><span class="s2">);</span>
+        <span class="s1">WebElement inputfield </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">usernametxt</span><span class="s2">);</span>
+        <span class="s1">inputfield</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s3">&quot;pepo01gl@gmail.com&quot;</span><span class="s2">);</span>
+        <span class="s1">WebElement inputpwd </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">pwdtxt</span><span class="s2">);</span>
+        <span class="s1">inputpwd</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s3">&quot;123456A@&quot;</span><span class="s2">);</span>
+
+        <span class="s1">WebElement clickLogin </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">Login</span><span class="s2">);</span>
+        <span class="s1">clickLogin</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+        <span class="s1">Thread</span><span class="s2">.</span><span class="s1">sleep</span><span class="s2">(</span><span class="s5">1000</span><span class="s2">);</span>
+
+        <span class="s1">WebElement clickprodcut </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">selectProdcut</span><span class="s2">);</span>
+        <span class="s1">clickprodcut</span><span class="s2">.</span><span class="s1">click</span><span class="s2">();</span>
+
+        <span class="s1">Thread</span><span class="s2">.</span><span class="s1">sleep</span><span class="s2">(</span><span class="s5">2000</span><span class="s2">);</span>
+
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s3">&quot;https://admin.unisell.vn/product/edit/1299290&quot;</span><span class="s2">);</span>
+
+        <span class="s1">Thread</span><span class="s2">.</span><span class="s1">sleep</span><span class="s2">(</span><span class="s5">2000</span><span class="s2">);</span>
+
+<span class="s4">//        WebElement selectProduct = driver.findElement(productDetail);</span>
+<span class="s4">//        selectProduct.click();</span>
+
+
+        <span class="s1">Actions actions </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Actions</span><span class="s2">(</span><span class="s1">driver</span><span class="s2">);</span>
+        <span class="s1">WebElement element </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">listingPrice</span><span class="s2">);</span>
+        <span class="s1">element</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s1">Keys</span><span class="s2">.</span><span class="s1">CONTROL </span><span class="s2">+ </span><span class="s3">&quot;A&quot;</span><span class="s2">, </span><span class="s1">Keys</span><span class="s2">.</span><span class="s1">BACK_SPACE</span><span class="s2">);</span>
+        <span class="s0">try </span><span class="s2">{</span>
+            <span class="s1">actions</span><span class="s2">.</span><span class="s1">moveToElement</span><span class="s2">(</span><span class="s1">element</span><span class="s2">).</span><span class="s1">perform</span><span class="s2">();</span>
+        <span class="s2">}</span><span class="s0">catch </span><span class="s2">(</span><span class="s1">StaleElementReferenceException e</span><span class="s2">){</span>
+            <span class="s1">element </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">listingPrice</span><span class="s2">);</span>
+            <span class="s1">actions</span><span class="s2">.</span><span class="s1">moveToElement</span><span class="s2">(</span><span class="s1">element</span><span class="s2">).</span><span class="s1">perform</span><span class="s2">();</span>
+        <span class="s2">}</span>
+        <span class="s1">actions</span><span class="s2">.</span><span class="s1">click</span><span class="s2">(</span><span class="s1">element</span><span class="s2">).</span><span class="s1">perform</span><span class="s2">();</span>
+        <span class="s1">actions</span><span class="s2">.</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s3">&quot;450000&quot;</span><span class="s2">).</span><span class="s1">perform</span><span class="s2">();</span>
+
+    <span class="s2">}</span>
+<span class="s2">}</span>
+
+
+
+
+</pre>
+</body>
+</html>
