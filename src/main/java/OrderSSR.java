@@ -1,4 +1,5 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -17,7 +18,7 @@ public class OrderSSR {
     By Login = By.xpath("(//button[@type= 'submit'])[1]");
     By iconToSSR = By.xpath("//img[@alt= 'export square']");
     By productList = By.xpath("(//a[@class ='nav-link level-0'])[1]");
-    By productDetail = By.xpath("//div[@id = '1299462']");
+    By productDetail = By.xpath("//div[@id = '1288028']");
     By btnAddtocart = By.xpath("//button[@id ='button-add-to-cart']");
     By btnCart = By.xpath("//a[@class ='navbar-brand shopping-cart-navbar']");
     By btnCompleteCart = By.xpath("//button[@rv-on-click= 'methods.onCheckout']");
@@ -66,9 +67,20 @@ public class OrderSSR {
         selectProductList.click();
         Thread.sleep(5000);
 
+        //Scroll
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        for (int i = 0; i < 2; i++) { // Số lần cuộn
+            js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+            try {
+                Thread.sleep(2000); // Thời gian chờ giữa các lần cuộn
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
         WebElement goProductdetail = driver.findElement(productDetail);
         goProductdetail.click();
-        Thread.sleep(1000);
+        Thread.sleep(3000);
 
         WebElement addTocart = driver.findElement(btnAddtocart);
         addTocart.click();
@@ -122,9 +134,12 @@ public class OrderSSR {
 
         WebElement selectbtnComplete = driver.findElement(btnCompleteAddress);
         selectbtnComplete.click();
-        Thread.sleep(2000);
+        Thread.sleep(4000);
+
 
         WebElement selectpaymentMethod = driver.findElement(paymentMethod);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(paymentMethod));
         selectpaymentMethod.click();
         Thread.sleep(2000);
 
@@ -137,9 +152,14 @@ public class OrderSSR {
         selectBtnConformPayment.click();
         Thread.sleep(2000);
 
-
         WebElement selectBtnCompleteOrder = driver.findElement(btnCompleteOrder);
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(btnCompleteOrder));
         selectBtnCompleteOrder.click();
+
+        Thread.sleep(5000);
+        driver.close();
+        System.out.println("Tao san pham thanh cong");
 
 
     }
