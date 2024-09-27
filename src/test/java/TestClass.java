@@ -7,6 +7,11 @@ public class TestClass {
     }
     @Test
     void test1() throws InterruptedException {
-        new EdtiProduct().testEdit();
+        new EditProductandCreateOrder().testEdit();
+    }
+
+    @Test
+    void testConfirm() throws InterruptedException {
+        new ConfirmOrder().testConfirm();
     }
 }
