@@ -14,4 +14,9 @@ public class TestClass {
     void testConfirm() throws InterruptedException {
         new ConfirmOrder().testConfirm();
     }
+
+    @Test
+    void testSSR() throws InterruptedException {
+        new OrderSSR().testSSR();
+    }
 }
