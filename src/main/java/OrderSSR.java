@@ -38,12 +38,7 @@ public class OrderSSR {
     By btnCompleteOrder = By.xpath("(//button[@rv-on-click='methods.onSubmit'])[1]");
 
     public void testSSR() throws InterruptedException {
-        //Download ChromeDriver
-        io.github.bonigarcia.wdm.WebDriverManager.chromedriver().setup();
-        // Init chrome driver
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("https://admin.unisell.vn");
+
         Thread.sleep(3000);
         WebElement inputfield = driver.findElement(usernametxt);
         inputfield.sendKeys("pepo01gl@gmail.com");
